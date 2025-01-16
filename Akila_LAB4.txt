@@ -1,0 +1,64 @@
+1. Write a program to demonstrate  use of  type casting in java.
+  print result after type casting.
+
+package demo;
+public class TypeCasting {
+    public static void main(String[] args) {
+        
+        int i = 100;
+        double d = i; // int to double
+        System.out.println("Type Casting from int to double : " + d);
+
+        double d1 = 99.99;
+        int i1 = (int) d1; // double to int
+        System.out.println("Type Casting from double to int: " + i1);
+
+        char c = 'A'; 
+        int i2 = (int) c; //char to int 
+        //in this the char A is printing in ASCII value of A
+        System.out.println("Type Casting from Char to Int : " + i2);
+
+        long l = 123456789L; 
+        short s = (short) l; //long to short
+        System.out.println("Type Casting from Long to short: " + s);
+    }
+}
+
+##output
+Type Casting from int to double : 100.0
+Type Casting from double to int: 99
+Type Casting from Char to Int : 65
+Type Casting from Long to short: -13035
+
+
+2. Write a program to demonstrate use of local, instance and static variables in java.
+
+package demo;
+class VariablesExample {
+    
+    int a = 10; // Instance variable
+
+    static int b = 20; // Static variable
+
+    public void displayLocalVariable() {
+        
+        int c = 30; // Local variable
+        System.out.println("Local Variable: " + c);
+    }
+
+    public static void main(String[] args) {
+        
+        VariablesExample obj = new VariablesExample(); // Creating an object to access instance variables
+
+        System.out.println("Instance Variable: " + obj.a); // Accessing instance variable
+
+        System.out.println("Static Variable: " + b); // Accessing static variable
+
+        obj.displayLocalVariable(); // Calling a method to display the local variable
+    }
+}
+
+##output
+Instance Variable: 10
+Static Variable: 20
+Local Variable: 30

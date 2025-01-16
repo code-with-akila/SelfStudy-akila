@@ -1,0 +1,18 @@
+package demo;
+
+public class First_pgm {
+
+	public static void main(String[] args) {
+		 int sub1 = 88;                            //initializing subject1 marks                        
+	     int sub2 = 80;
+	     int sub3 = 78;
+	     int sub4 = 44;
+	     int sub5 = 68;
+	     
+	     int total = (sub1+sub2+sub3+sub4+sub5);    // total calculated
+	     float percentage = (float) ((total/500.0)*100.0);
+	     System.out.println("Total : "+ total);     // printing total
+	     System.out.println("Percentage :"+percentage);
+	}
+
+}

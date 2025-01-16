@@ -1,0 +1,20 @@
+1. Write a conventional Java class (Bean class) to demonstrate an employee details.
+
+Additionally, 
+print Employee details 
+Calculate incremented salary of employee
+
+Use multiple employees for this example.
+
+
+
+2. 
+ Write a conventional Java class (Bean class) to demonstrate student  details.
+
+Additionally, 
+print student details 
+Calculate percentage of student with all subject marks.
+Print student result.
+
+
+Use multiple student for this example.

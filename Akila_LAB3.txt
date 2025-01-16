@@ -1,0 +1,74 @@
+1. Write a program to demonstrate all primitive datatypes in Java.
+
+package demo;
+public class PremitiveDataTypes {
+    public static void main(String[] args) {
+        // Primitive data types
+        byte byteValue = 10;
+        short shortValue = 1000;
+        int intValue = 100000;
+        long longValue = 10000000000L;
+        float floatValue = 3.14f;
+        double doubleValue = 123.456;
+        char charValue = 'A';
+        boolean booleanValue = true;
+
+        // Display values
+        System.out.println("byte: " + byteValue);
+        System.out.println("short: " + shortValue);
+        System.out.println("int: " + intValue);
+        System.out.println("long: " + longValue);
+        System.out.println("float: " + floatValue);
+        System.out.println("double: " + doubleValue);
+        System.out.println("char: " + charValue);
+        System.out.println("boolean: " + booleanValue);
+    }
+}
+
+##output
+byte: 10
+short: 1000
+int: 100000
+long: 10000000000
+float: 3.14
+double: 123.456
+char: A
+boolean: true
+
+
+
+2. Write a program to input student marks of multiple subject. Print total of marks , result depending on percentage
+
+package demo;
+public class StudentMarks {
+    public static void main(String[] args) {
+        // Predefined marks of subjects
+        int Math = 85;
+        int Phy=90;
+        int Chem=78;
+        int Science=88;
+        int Eng=76; 
+
+        // Calculate total marks
+        double total=((Math+Phy+Chem+Science+Eng));
+
+        // Calculate percentage
+        double percentage = (double) (total/500.0)*100.0;
+
+        // Display total and percentage
+        System.out.println("Total Marks: " + total);
+        System.out.println("Percentage: " + percentage + "%");
+
+        // Determine result based on percentage
+        if (percentage >= 50) {
+            System.out.println("Result: Pass");
+        } else {
+            System.out.println("Result: Fail");
+        }
+    }
+}
+
+##output
+Total Marks: 417.0
+Percentage: 83.39999999999999%
+Result: Pass
