@@ -1,0 +1,66 @@
+package demo;
+
+public class Stringdemo 
+{
+	public static void main(String[] args)
+	{
+	
+		
+		String s1 = "DevOps";
+		
+		System.out.println("Length of String : "+s1.length());   // length of string
+		
+		System.out.println("position with index : "+s1.charAt(3));  // index wise position
+		
+		System.out.println("Concatenation : "+ s1.concat("tools"));   // appended string
+		
+		System.out.println(s1);
+		
+		s1 = s1.concat("tools");
+		
+		System.out.println(s1);
+		
+		String s2 = new String("  python  ");      // declaring string
+		
+		System.out.println("Strip leading method :"+s2.stripLeading());   // strp leading
+		
+		System.out.println("Strip trailing method :"+s2.stripTrailing());   // strp trailing
+		
+		System.out.println("Strip method :"+s2.strip());   // strip
+		
+		
+		String s3 = "CONTROL Statements";
+		
+		System.out.println("Lower case : "+s3.toLowerCase());      // upper & lower cases
+		System.out.println("Upper case : "+s3.toUpperCase());
+		
+		
+		String s4 = s3.substring(8);                           //substring
+		System.out.println("SubString : "+s4);
+		
+		boolean response = s3.contains("state");              // contains method
+ 		System.out.println("Contains method : "+response);
+ 		
+ 		String s5 = "Developers";
+ 		
+ 		int response1 = s5.compareTo(s4);                     //compare to method
+ 		System.out.println("Compare result : "+response1);
+ 		
+ 		String s6 = "Developers";
+ 		int response2 = s5.compareTo(s6);                     //compare to method
+ 		System.out.println("Compare result : "+response2);
+ 		
+ 		String s7 = "Programming tools";
+ 		
+ 		char dest[] = new char[5];
+ 		
+ 		s7.getChars(12,17,dest,0);                      // getchar method
+ 		
+        for(int i=0;i<dest.length;i++)
+        {
+        	System.out.print(dest[i]);	
+        }
+ 		
+ 	}
+
+}
