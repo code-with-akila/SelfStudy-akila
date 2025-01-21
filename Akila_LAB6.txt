@@ -1,0 +1,61 @@
+1. Write a program to check whether entered year is leap or not.
+
+package com.lab;
+import java.util.*;
+
+public class LeapYear 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Year : ");
+		int year=sc.nextInt();
+		if ((year%4)==0)
+		{
+			System.out.println("Year is Leap year..");
+		}
+		else
+		{
+			System.out.println("Year is non Leap year..");
+		}
+	}
+}
+
+##output
+Enter Year : 
+2004
+Year is Leap year..
+
+
+2. Write a program to print reverse of  entered number.
+package com.demo;
+
+package com.lab;
+import java.util.*;
+
+public class ReverseNumber 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Number : ");
+		int num=sc.nextInt();
+		int reverse = 0;
+		
+		while (num !=0)
+		{
+			int i = num% 10;
+			reverse = reverse * 10 + i;
+			num /= 10;
+		}
+		
+		System.out.println("The reversed Number Is :"+reverse);
+	}
+
+}
+
+##output
+Enter Number : 
+12345
+The reversed Number Is :54321
+

@@ -1,0 +1,88 @@
+1. Write a program to print greatest out of three entered integer.
+
+package com.lab;
+import java.util.*;
+
+public class GreatestNo 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter First Number : ");
+		int num1=sc.nextInt();
+		
+		System.out.println("Enter Second Number : ");
+		int num2=sc.nextInt();
+		
+		System.out.println("Enter Third Number : ");
+		int num3=sc.nextInt();
+		
+		if(num1 > num2)
+		{
+			// greatest out of 2--> true (num1 , num3)
+			   if(num1 > num3)
+			   System.out.println("Greatest No : "+ num1); 	   
+			   else
+			   System.out.println("Greatest No : "+ num3);	   
+		}
+		else
+		{
+		    // greatest out of 2 --> false (num2 , num3)	
+			   if(num2 > num3)
+			   System.out.println("Greatest No : "+ num2);
+			   else
+			   System.out.println("Greatest No : "+ num3);
+		}
+		
+		
+	}
+}
+
+##output
+Enter First Number : 
+20
+Enter Second Number : 
+40
+Enter Third Number : 
+60
+Greatest No : 60
+
+
+
+2. Write a  program to print whether entered number is Armstrong number or not.
+
+package com.lab;
+import java.util.*;
+
+public class ArmstrongNo 
+{
+	    public static void main(String[] args) 
+	    {
+	    	Scanner sc=new Scanner(System.in);
+	    	System.out.println("Enter Number : ");
+	        int num = sc.nextInt();
+	        
+	        int originalNumber; 
+	        int remainder; 
+	        int result = 0;
+
+	        originalNumber = num;
+
+	        while (originalNumber != 0)
+	        {
+	            remainder = originalNumber % 10;
+	            originalNumber /= 10;
+	        }
+
+	        if(result == num)
+	            System.out.println(num + " is an Armstrong number.");
+	        else
+	            System.out.println(num + " is not an Armstrong number.");
+	    }
+	}
+
+##output
+Enter Number : 
+200
+200 is not an Armstrong number.
+
