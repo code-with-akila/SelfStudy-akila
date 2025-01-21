@@ -1,0 +1,95 @@
+package demo;
+import java.util.Scanner;
+
+public class StudentResult 
+{
+    public static void main(String[] args) 
+    {
+    	Scanner scanner = new Scanner(System.in);
+
+    	System.out.print("Enter marks for Physics: ");
+        int phy = scanner.nextInt();
+        
+        System.out.print("Enter marks for Chemistry: ");
+        int chem = scanner.nextInt();
+        
+        System.out.print("Enter marks for Social: ");
+        int social = scanner.nextInt();
+        
+        System.out.print("Enter marks for Mathematics: ");
+        int math = scanner.nextInt();
+
+        int totalMarks = phy + chem + social + math;
+        double percentage = (totalMarks / 400.0) * 100;
+        System.out.println("Percentage :"+percentage);
+        
+        String result;
+        int p= (int) (percentage / 10);
+        System.out.println("Percent :"+p);
+        switch (p) 
+        {
+        case 10:
+        {
+        	System.out.println("First Division");
+        	break;
+        }
+          
+        case 9:
+        {
+        	System.out.println("First Division");
+        	break;
+        }
+    
+        	
+        case 8:
+        {
+        	System.out.println("First Division");
+        	break;
+        }
+        	
+        case 7:
+        {
+        	System.out.println("Second Division");
+        	break;
+        }
+        case 6:
+        {
+        	System.out.println("Second Division");
+        	break;
+        }
+        case 5:
+        {
+        	System.out.println("Third Division");
+        	break;
+        }
+        case 4:
+        {
+        	System.out.println("Second Division");
+        	break;
+        }
+        case 3:
+        {
+        	System.out.println("fail");
+        	break;
+        }
+        case 2:
+        {
+        	System.out.println("fail");
+        	break;
+        }
+        case 1:
+        {
+        	System.out.println("fail");
+        	break;
+        }
+        	
+        default:
+        {
+        	System.out.println("Invalid choice");
+        }
+        }
+
+        
+    }
+}
+
