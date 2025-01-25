@@ -1,0 +1,163 @@
+1. Write a program which calculates the monthly bill amount for Electricity bill.
+
+package com.lab;
+import java.util.Scanner;
+
+public class ElectricityBill 
+{
+    // Method to calculate bill based on units used
+    void calculateBill(int units) 
+    {
+        double billAmount;
+
+        if (units <= 100) 
+        {
+            billAmount = units * 1.5; // Rate for first 100 units
+        } 
+        else if (units <= 200) 
+        {
+            billAmount = (100 * 1.5) + ((units - 100) * 2); // Rate for 101-200 units
+        } 
+        else 
+        {
+            billAmount = (100 * 1.5) + (100 * 2) + ((units - 200) * 3); // Rate for above 200 units
+        }
+
+        System.out.println("Your electricity bill for " + units + " units is: Rs " + billAmount);
+    }
+
+    public static void main(String[] args) 
+    {
+        // Creating object of ElectricityBill class
+        ElectricityBill bill = new ElectricityBill();
+
+        // Taking user input for units consumed
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter units consumed: ");
+        int units = scanner.nextInt();
+
+        // Calling the method to calculate and display the bill
+        bill.calculateBill(units);
+    }
+}
+
+##output
+Enter units consumed: 105
+Your electricity bill for 105 units is: Rs 160.0
+
+
+2.  Write a program to calculate area of Rectangle, Square, Circle and Triangle using inheritance.
+
+package com.lab;
+
+//Parent class Shape
+public class Shape 
+{
+ // Method to display the area 
+	void area() 
+	{
+		System.out.println("Area of the shape.");
+	}
+}
+
+//Rectangle class extending Shape
+class Rectangle extends Shape 
+{
+	int length, breadth;
+
+ // Constructor to initialize the length and breadth
+	Rectangle(int length, int breadth) 
+	{
+		this.length = length;
+		this.breadth = breadth;
+	}
+
+ // Overriding area method to calculate rectangle area
+ @Override
+ void area() 
+ {
+     System.out.println("Area of Rectangle: " + (length * breadth));
+ }
+}
+
+//Square class extending Rectangle
+class Square extends Rectangle 
+{
+ // Constructor for square (using side as length and breadth)
+	Square(int side) 
+	{
+		super(side, side);
+	}
+
+ // Overriding area method to calculate square area
+ @Override
+ void area() 
+ {
+     System.out.println("Area of Square: " + (length * length));
+ }
+}
+
+//Circle class extending Shape
+class Circle extends Shape 
+{
+	double radius;
+
+ // Constructor to initialize the radius
+ Circle(double radius) 
+ {
+     this.radius = radius;
+ }
+
+ // Overriding area method to calculate circle area
+ @Override
+ void area()
+ {
+     System.out.println("Area of Circle: " + (Math.PI * radius * radius));
+ }
+}
+
+//Triangle class extending Shape
+class Triangle extends Shape 
+{
+	int base, height;
+
+ // Constructor to initialize base and height
+ Triangle(int base, int height) 
+ {
+     this.base = base;
+     this.height = height;
+ }
+
+ // Overriding area method to calculate triangle area
+ @Override
+ void area() 
+ {
+     System.out.println("Area of Triangle: " + (0.5 * base * height));
+ }
+}
+
+public class ShapeMain 
+{
+	public static void main(String[] args) 
+	 {
+	     // Creating objects for each shape
+	     Rectangle rectangle = new Rectangle(10, 5);
+	     Square square = new Square(4);
+	     Circle circle = new Circle(7);
+	     Triangle triangle = new Triangle(6, 8);
+
+	     // Calculating and displaying the area of each shape
+	     rectangle.area();
+	     square.area();
+	     circle.area();
+	     triangle.area();
+	 }
+}
+
+##output
+Area of Rectangle: 50
+Area of Square: 16
+Area of Circle: 153.93804002589985
+Area of Triangle: 24.0
+
