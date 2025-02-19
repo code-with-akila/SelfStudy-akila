@@ -1,0 +1,95 @@
+1. Write a class with multiple area methods.
+Implement compile time polymorphism using method overloading.
+
+package com.lab;
+
+class AreaCal 	//Create a class with multiple area methods using method overloading
+{
+	 
+	 public double area(double length, double width)		// Method to calculate area of a rectangle
+	 {
+	     return length * width;
+	 }
+	 
+	 public double area(double radius) 	// Method to calculate area of a circle
+	 {
+	     return 3.14 * radius * radius;
+	 }
+	 
+	 public double area(double base, double height, boolean isTriangle) 	// Method to calculate area of a triangle
+	 {
+	     return 0.5 * base * height;
+	 }
+}
+
+//Main class to test method overloading
+public class AreaCalculator 
+{
+	 public static void main(String[] args) {
+	     // Create an object of AreaCalculator
+	     AreaCal calculator = new AreaCal();
+	     
+	     // Calculate and display different areas
+	     System.out.println("Rectangle Area: " + calculator.area(10, 20));
+	     System.out.println("Circle Area: " + calculator.area(7));
+	     System.out.println("Triangle Area: " + calculator.area(10, 5, true));
+	 }
+}
+
+##output
+Rectangle Area: 200.0
+Circle Area: 153.86
+Triangle Area: 25.0
+
+
+2. Write a class with its child class
+Implement run time polymorphism using method overriding.
+
+package com.lab;
+
+class Animal 		//Parent class
+{
+	public void makeSound() 		// Method to make a sound
+	{
+	     System.out.println("Animal makes a sound");
+	}
+}
+	
+
+class Dog extends Animal 	//Child class that overrides the makeSound method
+{
+	@Override
+	public void makeSound() 
+	{
+		System.out.println("Dog barks");
+	}
+}
+	
+class Cat extends Animal 		//Child class that overrides the makeSound method
+{
+	@Override
+	public void makeSound() 
+	{
+		System.out.println("Cat meows");
+	}
+}
+
+//Main class to test runtime polymorphism
+public class MainAnimal 
+{
+	 public static void main(String[] args) 
+	 {
+		 
+	     Animal myAnimal; 		// Parent class reference holding child class objects
+	     
+	     myAnimal = new Dog(); 		// Dog object
+	     myAnimal.makeSound(); 		// Calls Dog's makeSound method
+	     
+	     myAnimal = new Cat(); 		// Cat object
+	     myAnimal.makeSound(); 		// Calls Cat's makeSound method
+	 }
+}
+
+##output
+Dog barks
+Cat meows

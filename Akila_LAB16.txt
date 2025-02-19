@@ -1,0 +1,131 @@
+1. create a banking application to deposit and withdraw money.
+use super keyword in created classes.
+
+package com.lab;
+
+abstract class BankAccount1 		// Abstract class representing a bank account
+{
+    protected double balance;
+    
+    public BankAccount1(double balance)		// Constructor to initialize balance
+    {
+        this.balance = balance;
+    }
+
+    abstract void deposit(double amount);		// Abstract methods for deposit
+    abstract void withdraw(double amount);		// Abstract methods for withdraw
+
+    public void displayBalance() 		// Method to display balance
+    {
+        System.out.println("Current Balance: " + balance);
+    }
+}
+
+class SavingsAccount extends BankAccount1 		// Subclass representing a savings account
+{
+private double interestRate;
+
+public SavingsAccount(double balance, double interestRate)		// Constructor using super to initialize balance and interest rate
+{
+	super(balance);
+	this.interestRate = interestRate;
+}
+
+    // Implement deposit method
+    @Override
+    void deposit(double amount) 
+    {
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+    }
+
+    // Implement withdraw method
+    @Override
+    void withdraw(double amount) 
+    {
+        if (amount <= balance) 
+        {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } 
+        else 
+        {
+            System.out.println("Insufficient funds");
+        }
+    }
+}
+package com.lab;
+
+public class Banking 
+{
+	
+    public static void main(String[] args) 
+    {
+    	SavingsAccount myAccount = new SavingsAccount(5000, 2.5);		// Create a savings account with an initial balance and interest rate
+    	
+    	// Perform transactions
+    	myAccount.deposit(2000);
+    	myAccount.withdraw(1000);
+    	myAccount.displayBalance();
+	 }
+}
+
+##output
+Deposited: 2000.0
+Withdrawn: 1000.0
+Current Balance: 6000.0
+
+
+2. Write a program to deduce method overriding.
+use of inheritance is compulsory.
+
+package com.lab;
+
+public class Animal1 
+{
+	class Animal 		// Parent class
+	{
+	    public void makeSound() 		// Method to make a sound
+	    {
+	        System.out.println("Animal makes a sound");
+	    }
+	}
+
+package com.lab;
+
+public class MainAnimal1 
+{
+	public static void main(String[] args) 
+    {
+        Animal myAnimal;		// Parent class reference holding child class objects
+        
+        myAnimal = new Dog(); 	// Dog object
+        myAnimal.makeSound(); 	// Calls Dog's makeSound method
+        
+        myAnimal = new Cat(); 	// Cat object
+        myAnimal.makeSound(); 	// Calls Cat's makeSound method
+    }
+}
+
+	class Dog extends Animal 		// Child class Dog that overrides the makeSound method
+	{
+	    @Override
+	    public void makeSound() 
+	    {
+	        System.out.println("Dog barks");
+	    }
+	}
+
+	class Cat extends Animal  		// Child class Cat that overrides the makeSound method
+	{
+	    @Override
+	    public void makeSound() 
+	    {
+	        System.out.println("Cat meows");
+	    }
+	}
+}
+
+##output
+Dog barks
+Cat meows

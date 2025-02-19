@@ -1,0 +1,166 @@
+1.Write a Java program to create an interface Shape with the getArea() method. Create three classes Rectangle, Circle, and Triangle that implement the Shape interface.
+Implement the getArea() method for each of the three classes.
+
+package com.lab;
+
+interface Shape1		//Define an interface called Shape 
+{
+	double getArea();  // Method to calculate area
+}
+
+
+class Rectangle2 implements Shape1 	//Create a class Rectangle that implements Shape
+{
+	 private double width;
+	 private double height;
+	
+	 
+	 public Rectangle2(double width, double height) 	// Constructor to initialize width and height
+	 {
+	     this.width = width;
+	     this.height = height;
+	 }
+	
+	 // Implement the getArea method for Rectangle
+	 @Override
+	 public double getArea() 
+	 {
+	     return width * height;
+	 }
+	}
+	
+	
+	class Circle1 implements Shape1 	//Create a class Circle that implements Shape
+	{
+	 private double radius;
+	 private static final double PI = 3.14159;
+	
+	 
+	 public Circle1(double radius) 		// Constructor to initialize radius
+	 {
+	     this.radius = radius;
+	 }
+	
+	 // Implement the getArea method for Circle
+	 @Override
+	 public double getArea() {
+	     return PI * radius * radius;
+	 }
+}
+
+
+class Tringle implements Shape1 	//Create a class Triangle that implements Shape
+{
+ private double base;
+ private double height;
+
+ 
+ public Tringle(double base, double height) 	// Constructor to initialize base and height
+ {
+     this.base = base;
+     this.height = height;
+ }
+
+ // Implement the getArea method for Triangle
+ public double getArea() 
+ {
+     return 0.5 * base * height;
+ }
+}
+
+package com.lab;
+
+//Main class to test Shape implementations
+public class MainShape 
+{
+	public static void main(String[] args) 
+	{
+	   // Create objects for each shape
+	   Shape1 rectangle = new Rectangle2(10, 20);
+	   Shape1 circle = new Circle1(7);
+	   Shape1 triangle = new Tringle(10, 5);
+	
+	   // Display areas of the shapes
+	   System.out.println("Rectangle Area: " + rectangle.getArea());
+	   System.out.println("Circle Area: " + circle.getArea());
+	   System.out.println("Triangle Area: " + triangle.getArea());
+	}
+}
+
+##output
+Rectangle Area: 200.0
+Circle Area: 153.93791
+Triangle Area: 25.0
+
+
+2.To write a Java program to Employee salary details using interface.
+
+package com.lab;
+
+interface Employee 		//Define an interface called Employee
+{
+	double calculateSalary();  // Method to calculate salary
+}
+
+
+class FullTimeEmployee implements Employee 		//Create a class FullTimeEmployee that implements Employee
+{
+	 private double basicSalary;
+	 private double bonus;
+	
+	 
+	 public FullTimeEmployee(double basicSalary, double bonus) 	// Constructor to initialize basic salary and bonus
+	 {
+	     this.basicSalary = basicSalary;
+	     this.bonus = bonus;
+	 }
+	
+	 // Implement the calculateSalary method
+	 @Override
+	 public double calculateSalary() 
+	 {
+	     return basicSalary + bonus;
+	 }
+	}
+	
+	
+	class PartTimeEmployee implements Employee 	//Create a class PartTimeEmployee that implements Employee
+	{
+	 private double hourRate;
+	 private int hoursWorked;
+	
+	 
+	 public PartTimeEmployee(double hourlyRate, int hoursWorked) 	// Constructor to initialize hourly rate and hours worked
+	 {
+	     this.hourRate = hourlyRate;
+	     this.hoursWorked = hoursWorked;
+	 }
+	
+	 // Implement the calculateSalary method
+	 @Override
+	 public double calculateSalary() 
+	 {
+	     return hourRate * hoursWorked;
+	 }
+}
+
+package com.lab;
+
+//Main class to test Employee salary calculations
+public class MainEmployee 
+{
+	public static void main(String[] args) 
+	{
+	   // Create objects for full-time and part-time employees
+	   Employee fullTimeEmp = new FullTimeEmployee(50000, 10000);
+	   Employee partTimeEmp = new PartTimeEmployee(200, 25);
+	
+	   // Display salary details
+	   System.out.println("Full-Time Employee Salary: " + fullTimeEmp.calculateSalary());
+	   System.out.println("Part-Time Employee Salary: " + partTimeEmp.calculateSalary());
+	}
+}
+
+##output
+Full-Time Employee Salary: 60000.0
+Part-Time Employee Salary: 5000.0

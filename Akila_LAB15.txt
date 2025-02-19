@@ -1,0 +1,108 @@
+1. Write a java class to deduce demo of encapsulation. 
+
+package com.lab;
+
+public class Person 
+{
+	// Private variables (data hiding)
+	 private String name;
+	 private int age;
+	
+	 // Getter method for name
+	 public String getName() 
+	 {
+	     return name;
+	 }
+	 
+	 // Setter method for name
+	 public void setName(String name) 
+	 {
+	     this.name = name;
+	 }
+	
+	 // Getter method for age
+	 public int getAge() 
+	 {
+	     return age;
+	 }
+	
+	 // Setter method for age
+	 public void setAge(int age) 
+	 {
+	     if (age > 0) 
+	     { 
+	         this.age = age;
+	     } 
+	     else 
+	     {
+	         System.out.println("Age must be positive");
+	     }
+	 }
+
+	//Main class to test encapsulation
+	
+	 public static void main(String[] args) 
+	 {
+	     Person person = new Person();		// Create an object of Person
+	     
+	     // Set values using setter methods
+	     person.setName("Akila Konda");
+	     person.setAge(21);
+	     
+	     // Get and display values using getter methods
+	     System.out.println("Name: " + person.getName());
+	     System.out.println("Age: " + person.getAge());
+	 }
+}
+
+##output
+Name: Akila Konda
+Age: 21
+
+
+2.create and abstract class and implement abstract methods to print student details.
+
+package com.lab;
+
+abstract class Student1 		//Define an abstract class Student
+{
+	abstract void printDetails();		// Abstract method to print student details
+}
+
+class CollegeStudent extends Student1 	//Subclass that extends Student and implements the abstract method
+{
+	private String name;
+	private int rollNumber;
+	private String course;
+	 
+	public CollegeStudent(String name, int rollNumber, String course) 	// Constructor to initialize student details
+	{
+		this.name = name;
+		this.rollNumber = rollNumber;
+		this.course = course;
+	}
+	 
+	// Implement the abstract method
+	@Override
+	void printDetails() 
+	{
+		System.out.println("Student Name: " + name);
+		System.out.println("Roll Number: " + rollNumber);
+		System.out.println("Course: " + course);
+	}
+}
+
+//Main class to test the abstract class and its implementation
+public class AbstractClass
+{	 
+	public static void main(String[] args) 	 
+	{
+	     CollegeStudent AbstractClass = new CollegeStudent("Akila", 101, "CSE(AI&DS)");		// Create an object of CollegeStudent and call printDetails
+	     AbstractClass.printDetails();
+	}
+}
+
+##output
+Student Name: Akila
+Roll Number: 101
+Course: CSE(AI&DS)
