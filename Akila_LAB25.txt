@@ -1,0 +1,56 @@
+1. Write a Java program to sort in descending order an array of given string[A,X,D,Z,Y,C,W,B]
+
+package com.lab;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class SortingExample 
+{
+    public static void main(String[] args) 
+    {
+        String[] arr = {"A", "X", "D", "Z", "Y", "C", "W", "B"};		// Given array of strings
+        
+        Arrays.sort(arr, Collections.reverseOrder());		// Sorting in descending order
+        
+        System.out.println("Sorted array in descending order: " + Arrays.toString(arr));		// Displaying sorted array
+    }
+}
+
+##output
+Sorted array in descending order: [Z, Y, X, W, D, C, B, A]
+
+
+2.Write a Java program to search the particular integer in a list(key=67),list[45,35,56,67,78,89,78,12,20]
+
+package com.lab;
+
+import java.util.ArrayList;
+
+public class SearchingExample 
+{
+    public static void main(String[] args) 
+    {
+        ArrayList<Integer> list = new ArrayList<>();		// Given list of integers
+        
+        int[] numbers = {45, 35, 56, 67, 78, 89, 78, 12, 20};
+        for (int num : numbers) 
+        {
+            list.add(num);
+        }
+        
+        int key = 67;		// Key to search
+       
+        if (list.contains(key)) 		 // Searching for the key in the list
+        {
+            System.out.println("The number " + key + " is present in the list.");
+        } 
+        else 
+        {
+            System.out.println("The number " + key + " is not present in the list.");
+        }
+    }
+}
+
+##output
+The number 67 is present in the list.

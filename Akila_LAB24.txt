@@ -1,0 +1,101 @@
+1. write a program for sorting the number in ascending order array without using sort() method
+
+package com.lab;
+
+import java.util.Scanner;
+public class SortArray 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter the number of elements: ");
+        int n = sc.nextInt();		// Get the size of the array
+        
+        int[] arr = new int[n];
+       
+        System.out.println("Enter " + n + " numbers:");		// Input elements into the array
+        for (int i = 0; i < n; i++) 
+        {
+            arr[i] = sc.nextInt();
+        }
+        
+        for (int i = 0; i < n - 1; i++) 	// Sorting using Bubble Sort
+        {
+            for (int j = 0; j < n - i - 1; j++) 
+            {
+                if (arr[j] > arr[j + 1]) 
+                {
+                    int temp = arr[j];		// Swaping elements
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        
+        System.out.println("Sorted Array in Ascending Order:");		// Display sorted array
+        for (int num : arr) 
+        {
+            System.out.print(num + " ");
+        }
+       
+    }
+}
+
+##output
+Enter the number of elements: 5
+Enter 5 numbers:
+2
+4
+7
+1
+0
+Sorted Array in Ascending Order:
+0 1 2 4 7 
+
+
+2. WAP to find the biggest number of given array.
+
+package com.lab;
+
+import java.util.Scanner;
+public class BiggestNumber 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter the number of elements: ");
+        int n = sc.nextInt();		// Get the size of the array
+        
+        int[] arr = new int[n];
+        
+        System.out.println("Enter " + n + " numbers:");		// Input elements into the array
+        for (int i = 0; i < n; i++) 
+        {
+            arr[i] = sc.nextInt();
+        }
+        
+        int max = arr[0];		// Find the biggest number
+        for (int i = 1; i < n; i++) 
+        {
+            if (arr[i] > max) 
+            {
+                max = arr[i];
+            }
+        }
+        
+        System.out.println("The biggest number is: " + max);		// Display the biggest number
+    }
+}
+
+##output
+Enter the number of elements: 6
+Enter 6 numbers:
+4
+2
+7
+1
+0
+8
+The biggest number is: 8

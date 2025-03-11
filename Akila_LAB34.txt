@@ -1,0 +1,56 @@
+1. Write a program to demonstrate use of  regular expression.
+
+package com.lab;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexExample 
+{
+    public static void main(String[] args) 
+    {
+        String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";		// Regular expression pattern for validating an email address
+        
+        Pattern p = Pattern.compile(regex);		// Compile the regex pattern
+
+        // Sample email addresses to test
+        String email1 = "test@example.com"; 	// Valid email
+        String email2 = "invalid-email.com"; 	// Invalid email (missing @ and domain)
+
+        // Create Matcher objects to check if emails match the regex pattern
+        Matcher m1 = p.matcher(email1);
+        Matcher m2 = p.matcher(email2);
+
+        // Print the validation results
+        System.out.println(email1 + " is valid: " + m1.matches()); // Expected: true
+        System.out.println(email2 + " is valid: " + m2.matches()); // Expected: false
+    }
+}
+
+
+##output
+test@example.com is valid: true
+invalid-email.com is valid: false
+
+
+2. Write a program to demonstrate use of  wrapper class.
+
+package com.lab;
+
+public class WrapperExample 
+{
+    public static void main(String[] args) 
+    {
+        double num1 = 75.25; // Primitive double value
+        
+        Double wrappedNum1 = new Double(num1);		// Converting primitive double to Double object
+        System.out.println("Wrapped Double wrappedNum1: " + wrappedNum1);
+
+        Double wrappedNum2 = new Double("123.45"); // Creating Double object from a String
+        System.out.println("Wrapped Double wrappedNum2: " + wrappedNum2);
+    }
+}
+
+##output
+Wrapped Double wrappedNum1: 75.25
+Wrapped Double wrappedNum2: 123.45

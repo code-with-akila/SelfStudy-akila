@@ -1,0 +1,75 @@
+1)How to reverse a String in place in Java?
+
+package com.lab;
+
+import java.util.Scanner;
+
+public class ReverseString
+{
+    public static void main(String[] args) 
+    {
+    	Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");		// Taking input from user
+        String str = sc.nextLine();
+         
+        char[] charArray = str.toCharArray();
+        int left = 0, right = charArray.length - 1;
+        
+        while (left < right) 
+        {
+            char temp = charArray[left];		// Swaping characters
+            charArray[left] = charArray[right];		
+            charArray[right] = temp;
+            left++;
+            right--;
+        }
+        
+        System.out.println("Reversed String: " + new String(charArray));		// Printing reversed string
+    }
+}
+
+##output
+Enter a string: Akila
+Reversed String: alikA
+
+
+2)How do you count a number of vowels and consonants in a given string? 
+
+package com.lab;
+
+import java.util.Scanner;
+
+public class VowelConsonantExample 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");		// Taking input from user
+        String input = sc.nextLine().toLowerCase();
+        
+        int vowels = 0, consonants = 0;		// Counting vowels and consonants
+        
+        for (char ch : input.toCharArray()) 
+        {
+            if (Character.isLetter(ch)) 
+            {
+                if ("aeiou".indexOf(ch) != -1) 
+                {
+                    vowels++;
+                } 
+                else 
+                {
+                    consonants++;
+                }
+            }
+        }
+        
+        System.out.println("Number of vowels: " + vowels);
+        System.out.println("Number of consonants: " + consonants);
+    }
+}
+
+##output
+Enter a string: Happy Mahashivratri
+Number of vowels: 6
+Number of consonants: 12

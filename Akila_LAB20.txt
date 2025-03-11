@@ -1,0 +1,91 @@
+1. WAP to read from a file using BufferedReader
+
+package com.lab;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFileExample 
+{
+    public static void main(String[] args) 
+    {
+        try 
+        {
+            FileReader fileReader = new FileReader("D://Anudip Intership/example.txt");		// Create a FileReader object to read the file
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            String line;
+            
+            while ((line = bufferedReader.readLine()) != null) 		// Read and print each line from the file
+            {
+                System.out.println(line);
+            }
+            
+            bufferedReader.close();		// Close the BufferedReader
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+
+##output
+This is File Reader and Buffer Reader Example
+
+
+2. WAP to write in a file using BufferedWriter
+
+package com.lab;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileReadWriteExample 
+{
+    public static void main(String[] args) 
+    {
+        try		// Writing to a file using BufferedWriter 
+        {
+            FileWriter fileWriter = new FileWriter("example.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            
+            bufferedWriter.write("Hello, this is a simple file writing example.");
+            bufferedWriter.newLine();
+            bufferedWriter.write("BufferedWriter makes writing efficient.");
+            
+            bufferedWriter.close();
+            System.out.println("Data successfully written to the file.");
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("Error writing to the file: " + e.getMessage());
+        }
+
+        try		// Reading from a file using BufferedReader 
+        {
+            FileReader fileReader = new FileReader("D://Anudip Intership/example.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            String line;
+            while ((line = bufferedReader.readLine()) != null) 
+            {
+                System.out.println(line);
+            }
+            
+            bufferedReader.close();
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+
+##output
+Data successfully written to the file.
+This is File Reader and Buffer Reader Example

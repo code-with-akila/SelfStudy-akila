@@ -1,0 +1,158 @@
+LAB 32
+1. Write a class with method to check given number is armstrong or not.
+
+  Execute unit test case for same.
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.example</groupId> <!-- Changed groupId -->
+  <artifactId>ArmstrongDemo</artifactId> <!-- Changed artifactId -->
+  <version>1.0.0</version> <!-- Updated version -->
+
+  <dependencies>
+    <!-- JUnit Dependency for Unit Testing -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.1</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+package com.lab;
+
+public class ArmstrongNumber 
+{
+	 int sum = 0;  	// Variable to store the sum of cubes of digits
+	 int remainder = 0;  	// Variable to store each digit
+	
+	 public int calculateArmstrong(int num)		// Method to check if a number is an Armstrong number
+	 {
+	     int originalNum = num; 	// Store original number
+	     sum = 0; 	// Reset sum for each calculation
+	     
+	     while (num != 0) 
+	     {
+	         remainder = num % 10; 	// Extract last digit
+	         sum = sum + (remainder * remainder * remainder); 	// Cube the digit and add to sum
+	         num = num / 10; 	// Remove last digit
+	     }
+	     
+	     return sum;  	// Return calculated sum
+	 }
+}
+
+package com.lab;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.Assert;
+
+public class ArmstrongNumberTest 
+{
+    
+    @Test
+    public void testCalculateArmstrong() 
+    {
+        int num = 9474; 	// Changed test number to another Armstrong number
+        ArmstrongNumber armstrong = new ArmstrongNumber(); 	// Create object
+
+        Assert.assertEquals(9474, armstrong.calculateArmstrong(num));		// Check if calculated Armstrong sum matches the original number
+    }
+}
+
+
+2. Write a class with method to check given string is palindrome  or not.
+
+  Execute unit test case for same.
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId> <!-- Changed groupId -->
+  <artifactId>PalindromeDemo</artifactId> <!-- Changed artifactId -->
+  <version>1.0.0</version> <!-- Updated version -->
+
+  <dependencies>
+    <!-- JUnit Dependency for Unit Testing -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.1</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+package com.lab;
+
+public class PalindromeNumber 
+{
+	 public boolean checkPalindrome(String input)		// Method to check if the given string is a palindrome
+	 {
+	     String reversed = new StringBuilder(input).reverse().toString();		// Reverse the string using StringBuilder
+	     
+	     return input.equalsIgnoreCase(reversed);		// Compare original string with reversed string
+	 }
+}
+
+package com.lab;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.Assert;
+
+public class PalindromeNumberTest 
+{
+    
+    @Test
+    public void testPalindrome() 
+    {
+        PalindromeNumber palindromeChecker = new PalindromeNumber(); 	// Create object
+        
+        // Test cases with expected results
+        assertTrue(palindromeChecker.checkPalindrome("level"));  	// Palindrome
+        assertTrue(palindromeChecker.checkPalindrome("Deified")); 	// Palindrome with mixed case
+        assertFalse(palindromeChecker.checkPalindrome("world")); 	// Not a palindrome
+        assertTrue(palindromeChecker.checkPalindrome("12321"));  	// Numeric palindrome
+        assertFalse(palindromeChecker.checkPalindrome("abcdef")); 	// Not a palindrome
+    }
+}

@@ -1,0 +1,196 @@
+1 Write code to declare an array of objects of a class Student with a size of 5 Initialize each object in the array with relevant data (name, age, grade) using a constructor
+
+package com.lab;
+
+class StudentExample 
+{
+    // Instance variables to store student details
+    String name;
+    int age;
+    char grade;
+
+    public StudentExample(String name, int age, char grade)		// Constructor to initialize student details
+    {
+        this.name = name;
+        this.age = age;
+        this.grade = grade;
+    }
+    
+    public void display()		// Method to display student details
+    {
+        System.out.println("Name: " + name + ", Age: " + age + ", Grade: " + grade);
+    }
+
+    public static void main(String[] args) 
+    {
+        StudentExample[] students = new StudentExample[5];		// Creating an array to store multiple student objects
+        
+        // Initializing student objects with new names and data
+        students[0] = new StudentExample("Akila", 15, 'A');
+        students[1] = new StudentExample("pradeep", 16, 'B');
+        students[2] = new StudentExample("Priyanka", 15, 'A');
+        students[3] = new StudentExample("Vinod", 17, 'C');
+        students[4] = new StudentExample("Ankita", 16, 'B');
+
+        for (StudentExample student : students)		// Looping through the array to display student details
+        {
+            student.display();
+        }
+    }
+}
+
+##output
+Name: Akila, Age: 15, Grade: A
+Name: pradeep, Age: 16, Grade: B
+Name: Priyanka, Age: 15, Grade: A
+Name: Vinod, Age: 17, Grade: C
+Name: Ankita, Age: 16, Grade: B
+
+
+2.Define a method calculateAverage that calculates and returns the average value of elements in an integer array. Ensure the array is passed by reference.
+
+package com.lab;
+
+class StudentExample1
+{
+    String name;
+    int age;
+    char grade;
+
+    public StudentExample1(String name, int age, char grade)		// Constructor to initialize student details 
+    {
+        this.name = name;
+        this.age = age;
+        this.grade = grade;
+    }
+
+    public void display()		// Method to display student details 
+    {
+        System.out.println("Name: " + name + ", Age: " + age + ", Grade: " + grade);
+    }
+
+    public static double calculateAverage(int[] numbers)		// Method to calculate the average of an array of numbers 
+    {
+        if (numbers.length == 0) return 0; 		// Return 0 if the array is empty
+        int sum = 0;
+        
+        for (int num : numbers) 
+        {
+            sum += num;
+        }
+        return (double) sum / numbers.length; 	// Return the average
+    }
+
+    public static void main(String[] args) 
+    {
+        StudentExample1[] students = new StudentExample1[5];		// Creating an array of students
+        students[0] = new StudentExample1("Akila", 16, 'A');
+        students[1] = new StudentExample1("Pradeep", 17, 'B');
+        students[2] = new StudentExample1("Ankita", 15, 'A');
+        students[3] = new StudentExample1("Vinod", 18, 'C');
+        students[4] = new StudentExample1("Priyanka", 16, 'B');
+
+        for (StudentExample1 student : students)		// Displaying student details
+        {
+            student.display();
+        }
+
+        int[] numbers = {12, 24, 36, 48, 60};		// Array of numbers for calculating the average
+        
+        System.out.println("Average: " + calculateAverage(numbers));		// Displaying the calculated average
+    }
+}
+
+##output
+Name: Akila, Age: 16, Grade: A
+Name: Pradeep, Age: 17, Grade: B
+Name: Ankita, Age: 15, Grade: A
+Name: Vinod, Age: 18, Grade: C
+Name: Priyanka, Age: 16, Grade: B
+Average: 36.0
+
+
+3. Write a method findStudentByName that searches for a Student object by name within the array. Return the index of the object if found, or -1 if not found.
+
+package com.lab;
+
+public class StudentExample2
+{
+	 String name;
+	 int age;
+	 char grade;
+	
+	 public StudentExample2(String name, int age, char grade)		// Constructor to initialize student details
+	 {
+	     this.name = name;
+	     this.age = age;
+	     this.grade = grade;
+	 }
+	
+	 public void display() 		// Method to display student details
+	 {
+	     System.out.println("Name: " + name + ", Age: " + age + ", Grade: " + grade);
+	 }
+	
+	 public static double calculateAverage(int[] numbers)		// Method to calculate the average of an integer array
+	 {
+	     if (numbers.length == 0) return 0;
+	     int sum = 0;
+	     for (int num : numbers) 
+	     {
+	         sum += num;
+	     }
+	     return (double) sum / numbers.length;
+	 }
+	
+	 public static int findStudentByName(StudentExample2[] students, String name)		// Method to find a student by name in the array
+	 {
+	     for (int i = 0; i < students.length; i++) 
+	     {
+	         if (students[i].name.equals(name)) 
+	         {
+	             return i;  	// Return index if found
+	         }
+	     }
+	     return -1;  	// Return -1 if student is not found
+	 }
+	
+	 public static void main(String[] args) 
+	 {
+	     // Creating an array of Student objects
+	     StudentExample2[] students = new StudentExample2[5];
+	     students[0] = new StudentExample2("Akila", 14, 'A');
+	     students[1] = new StudentExample2("Kavita", 15, 'B');
+	     students[2] = new StudentExample2("Vinod", 14, 'A');
+	     students[3] = new StudentExample2("Aarush", 16, 'C');
+	     students[4] = new StudentExample2("Abhi", 15, 'B');
+	
+	     for (StudentExample2 student : students) 		// Displaying all student details
+	     {
+	         student.display();
+	     }
+	
+	     int[] numbers = {25, 30, 35, 40, 45};		// Example array of numbers
+	     System.out.println("Average: " + calculateAverage(numbers));
+	
+	     String searchName = "Aarush";		// Searching for a student by name
+	     int index = findStudentByName(students, searchName);
+	     if (index != -1) 
+	     {
+	         System.out.println(searchName + " found at index: " + index);
+	     } 
+	     else 
+	     {
+	         System.out.println(searchName + " not found.");
+	     }
+	 }
+}
+
+##output
+Name: Akila, Age: 14, Grade: A
+Name: Kavita, Age: 15, Grade: B
+Name: Vinod, Age: 14, Grade: A
+Name: Aarush, Age: 16, Grade: C
+Name: Abhi, Age: 15, Grade: B
+Average: 35.0
+Aarush found at index: 3

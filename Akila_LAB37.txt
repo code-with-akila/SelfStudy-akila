@@ -1,0 +1,92 @@
+1.  Write a  java program for Exception Handling using throw keyword.
+
+package com.lab;
+
+public class ThrowExample 
+{
+    public static void checkAge(int age)		// Method to check voting eligibility
+    {
+        if (age < 18) 
+        {
+            throw new ArithmeticException("Not eligible to vote. Age must be 18 or above.");		// Throwing an exception if age is less than 18
+        } 
+        else 
+        {
+            System.out.println("You are eligible to vote.");
+        }
+    }
+
+    public static void main(String[] args) 
+    {
+        System.out.println("Checking voting eligibility...");
+
+        try 
+        {
+            checkAge(16); 	// This will throw an exception
+        } 
+        catch (ArithmeticException e) 
+        {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+
+        checkAge(20); 	// This will not throw an exception
+    }
+}
+
+##output
+Checking voting eligibility...
+Exception caught: Not eligible to vote. Age must be 18 or above.
+You are eligible to vote.
+
+
+2. Create two thread.one thread is finding average of first 50 numbers and other thread is printing square of number store in array arr={10,15,20,25,30}
+
+package com.lab;
+
+class AverageThread extends Thread		//Class for finding the average of the first 50 numbers
+{
+	 public void run() 
+	 {
+	     int sum = 0;
+	     for (int i = 1; i <= 50; i++) 
+	     {
+	         sum += i;
+	     }
+	     double average = (double) sum / 50;
+	     System.out.println("Average of first 50 numbers: " + average);
+	 }
+}
+
+class SquareThread extends Thread		//Class for printing the square of numbers in the array 
+{
+	 public void run() 
+	 {
+	     int[] arr = {10, 15, 20, 25, 30};
+	     for (int num : arr) 
+	     {
+	         System.out.println("Square of " + num + " is: " + (num * num));
+	     }
+	 }
+}
+
+public class MultiThreadExample 
+{
+	 public static void main(String[] args) 
+	 {
+		 // Creating objects for both threads
+	     AverageThread t1 = new AverageThread();
+	     SquareThread t2 = new SquareThread();
+	
+	     // Starting both threads
+	     t1.start();
+	     t2.start();
+	 }
+}
+
+##output
+Average of first 50 numbers: 25.5
+Square of 10 is: 100
+Square of 15 is: 225
+Square of 20 is: 400
+Square of 25 is: 625
+Square of 30 is: 900

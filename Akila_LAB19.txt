@@ -1,0 +1,166 @@
+1. Create a Package named person inside this package create class PersonalDetails, Address and Employment.
+
+package com.labperson;
+
+public class PersonalDetails 
+{
+	private String name;
+    private int age;
+
+    public PersonalDetails(String name, int age) 
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    void displayDetails() 
+    {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+package com.labperson;
+
+public class Address 
+{
+	private String city;
+	private String country;
+
+	public Address(String city, String country) 
+	{
+	    this.city = city;
+	    this.country = country;
+	}
+	
+	public void displayAddress() 
+	{
+	    System.out.println("City: " + city);
+	    System.out.println("Country: " + country);
+	}
+}
+
+package com.labperson;
+
+public class Employment 
+{
+	private String company;
+    private String position;
+
+    public Employment(String company, String position) 
+    {
+        this.company = company;
+        this.position = position;
+    }
+
+    public void displayEmployment() 
+    {
+        System.out.println("Company: " + company);
+        System.out.println("Position: " + position);
+    }
+    
+    public static void main(String[] args) 
+    {
+        PersonalDetails person = new PersonalDetails("Akila", 21);
+        Address address = new Address("Solapur", "India");
+        Employment employment = new Employment("Capgemini", "Software Engineer");
+
+        person.displayDetails();
+        address.displayAddress();
+        employment.displayEmployment();
+    }
+}
+
+##output
+Name: Akila
+Age: 21
+City: Solapur
+Country: India
+Company: Capgemini
+Position: Software Engineer
+
+
+2. Create a Package named student inside this package create class StudentDetails, Marks and Result.
+
+package com.labstudent;
+
+public class StudentDetails 
+{
+	 private String name;
+	 private int rollNumber;
+	
+	 public StudentDetails(String name, int rollNumber) 
+	 {
+	     this.name = name;
+	     this.rollNumber = rollNumber;
+	 }
+	
+	 void displayDetails() 
+	 {
+	     System.out.println("Student Name: " + name);
+	     System.out.println("Roll Number: " + rollNumber);
+	 }
+}
+
+class Marks 
+{
+	 int math;
+	 int science;
+	 int english;
+	
+	 public Marks(int math, int science, int english) 
+	 {
+	     this.math = math;
+	     this.science = science;
+	     this.english = english;
+	 }
+	
+	 void displayMarks() 
+	 {
+	     System.out.println("Math: " + math);
+	     System.out.println("Science: " + science);
+	     System.out.println("English: " + english);
+	 }
+}
+
+class Result 
+{
+	 private Marks marks;
+	
+	 public Result(Marks marks) 
+	 {
+	     this.marks = marks;
+	 }
+	
+	void displayResult() 
+	{
+		int total = marks.math + marks.science + marks.english;
+	     double percentage = total / 3.0;
+	     System.out.println("Total Marks: " + total);
+	     System.out.println("Percentage: " + percentage + "%");
+	 }
+}
+package com.labstudent;
+
+public class Student 
+{
+	 public static void main(String[] args) 
+	 {
+	     StudentDetails student = new StudentDetails("Akila", 101);
+	     Marks marks = new Marks(85, 90, 88);
+	     Result result = new Result(marks);
+
+	     student.displayDetails();
+	     marks.displayMarks();
+	     result.displayResult();
+	 }
+}
+
+##output
+Student Name: Akila
+Roll Number: 101
+Math: 85
+Science: 90
+English: 88
+Total Marks: 263
+Percentage: 87.66666666666667%
