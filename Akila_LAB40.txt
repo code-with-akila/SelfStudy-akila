@@ -1,0 +1,110 @@
+Q1) WAP for handling DivideByZeroException.
+
+package com.lab;
+
+public class DivisionExceptionHandling 
+{
+    public static void main(String[] args) 
+    {
+        try 
+        {
+        	// Defining two numbers for division
+            int dividend = 50;  // Number to be divided
+            int divisor = 0;    // Number that divides the dividend
+            
+            int quotient = dividend / divisor; 		// Attempting division (This will cause an exception if divisor is 0)
+            
+            System.out.println("Result: " + quotient);		// This line will not execute if an exception occurs
+            
+        } 
+        catch (ArithmeticException e) 
+        {
+            System.out.println("Error: Cannot divide by zero. Please use a valid divisor.");		// Handling the exception if division by zero occurs
+        }
+        
+        System.out.println("Program execution continues smoothly...");		// This message confirms that the program continues running after handling the exception
+    }
+}
+
+##output
+Error: Cannot divide by zero. Please use a valid divisor.
+Program execution continues smoothly...
+
+
+Q2) WAP for storing 10 student records from the user using the Array of the object and handling ArrayIndexOutOfBoundException.
+
+package com.lab;
+
+import java.util.Scanner;
+
+class Studentdetail			// Student class to store student details
+{
+	
+    String studentName;
+    int studentAge;
+
+    public Studentdetail(String name, int age)		// Constructor to initialize student details 
+    {
+        this.studentName = name;
+        this.studentAge = age;
+    }
+
+    public void display()		// Method to display student details
+    {
+        System.out.println("Student Name: " + studentName + ", Age: " + studentAge);
+    }
+}
+
+public class StudentRecord 
+{
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        Studentdetail[] students = new Studentdetail[5];		// Array to store up to 5 students
+
+        try 
+        {
+            for (int i = 0; i <= 5; i++)		// Collecting student details (intentionally exceeding array size)
+            {  
+                System.out.println("Enter name and age for Student " + (i + 1) + ":");
+                String name = scanner.next();
+                int age = scanner.nextInt();
+                students[i] = new Studentdetail(name, age);
+            }
+        } 
+        catch (ArrayIndexOutOfBoundsException e) 
+        {
+            System.out.println("⚠️ Error: Maximum limit of 5 students reached. Cannot add more students.");		// Handling case where user enters more students than allowed
+        }
+
+        System.out.println("\n✅ Stored Student Records:");		// Display stored student records
+        for (int i = 0; i < students.length && students[i] != null; i++) 
+        {
+            students[i].display();
+        }
+
+    }
+}
+
+##output
+Enter name and age for Student 1:
+Akila 21
+Enter name and age for Student 2:
+Pradeep 25
+Enter name and age for Student 3:
+Vinod 23
+Enter name and age for Student 4:
+Archana 22
+Enter name and age for Student 5:
+Priyanka 28
+Enter name and age for Student 6:
+Kartik 19
+⚠️ Error: Maximum limit of 5 students reached. Cannot add more students.
+
+✅ Stored Student Records:
+Student Name: Akila, Age: 21
+Student Name: Pradeep, Age: 25
+Student Name: Vinod, Age: 23
+Student Name: Archana, Age: 22
+Student Name: Priyanka, Age: 28

@@ -1,0 +1,225 @@
+1.Write a Java program that creates a bank account with concurrent deposits and withdrawals using threads.
+
+package com.lab;
+
+class Bank		// Bank class to manage balance with deposit and withdrawal operations
+{
+    int balance; 	// Holds the account balance
+
+    public Bank(int initialBalance)		// Constructor to initialize the account balance
+    {
+        this.balance = initialBalance;
+    }
+
+    public synchronized void deposit(int amount)		// Synchronized deposit method to prevent data inconsistency in multi-threading
+    {
+        balance = balance + amount;
+        System.out.println(Thread.currentThread().getName() + " deposited " + amount + ", Balance: " + balance);
+    }
+
+    public synchronized void withdraw(int amount)		// Synchronized withdraw method to ensure safe transactions
+    {
+        if (balance >= amount) 
+        {
+            balance -= amount;
+            System.out.println(Thread.currentThread().getName() + " withdrew " + amount + ", Balance: " + balance);
+        } 
+        else 
+        {
+            System.out.println(Thread.currentThread().getName() + " attempted to withdraw " + amount + ", but insufficient balance.");
+        }
+    }
+}
+
+class DepositThread extends Thread		// Thread for depositing money into the account
+{
+    private Bank account;
+    private int amount;
+
+    public DepositThread(Bank account, int amount)		// Constructor to initialize account and deposit amount
+    {
+        this.account = account;
+        this.amount = amount;
+    }
+
+    public void run()		// Run method that deposits money 5 times
+    {
+        for (int i = 0; i < 5; i++) 
+        {
+            account.deposit(amount);
+            try 
+            { 
+                Thread.sleep(100); 		// Simulate processing time
+            } 
+            catch (InterruptedException e) 
+            {
+            	
+            }
+        }
+    }
+}
+
+class WithdrawThread extends Thread		// Thread for withdrawing money from the account
+{
+    private Bank account;
+    private int amount;
+
+    public WithdrawThread(Bank account, int amount)		// Constructor to initialize account and withdrawal amount
+    {
+        this.account = account;
+        this.amount = amount;
+    }
+
+    public void run()		// Run method that withdraws money 5 times
+    {
+        for (int i = 0; i < 5; i++) 
+        {
+            account.withdraw(amount);
+            try 
+            { 
+                Thread.sleep(100); // Simulate processing time
+            } 
+            catch (InterruptedException e) 
+            {
+            	
+            }
+        }
+    }
+}
+
+public class BankTransaction 
+{
+    public static void main(String[] args) 
+    {
+        Bank account = new Bank(2000);		// Create a bank account with an initial balance of 2000
+
+        // Create deposit and withdrawal threads
+        Thread depositThread = new DepositThread(account, 700);  		// Deposits 700 each time
+        Thread withdrawThread = new WithdrawThread(account, 500); 		// Withdraws 500 each time
+
+        // Start both threads
+        depositThread.start();
+        withdrawThread.start();
+
+        try 
+        {
+            depositThread.join();		// Ensure both threads complete before printing the final balance
+            withdrawThread.join();
+        } 
+        catch (InterruptedException e) 
+        {
+        	
+        }
+
+        System.out.println("Final Balance: " + account.balance);		// Display final balance after transactions
+    }
+}
+
+##outut
+Thread-0 deposited 700, Balance: 2700
+Thread-1 withdrew 500, Balance: 2200
+Thread-0 deposited 700, Balance: 2900
+Thread-1 withdrew 500, Balance: 2400
+Thread-0 deposited 700, Balance: 3100
+Thread-1 withdrew 500, Balance: 2600
+Thread-0 deposited 700, Balance: 3300
+Thread-1 withdrew 500, Balance: 2800
+Thread-0 deposited 700, Balance: 3500
+Thread-1 withdrew 500, Balance: 3000
+Final Balance: 3000
+
+
+2.Write a Java program that sorts an array of integers using multiple threads.
+
+package com.lab;
+
+import java.util.Arrays;
+
+class ArraySortThread extends Thread		// Thread class for sorting an array
+{
+    private int[] array; 	// Array to be sorted
+
+    public ArraySortThread(int[] array)		// Constructor to initialize the array
+    {
+        this.array = array;
+    }
+
+    public void run()		// Run method that sorts the array
+    {
+        Arrays.sort(array); 	// Sorting the array using built-in method
+        System.out.println(Thread.currentThread().getName() + " sorted: " + Arrays.toString(array));
+    }
+}
+
+public class MultipleThread 
+{
+    public static void main(String[] args) 
+    {
+        int[] numbers = {12, 7, 3, 9, 15, 2, 20, 11, 6, 1};		// Define an unsorted array
+        
+        int mid = numbers.length / 2;		// Find the middle index to divide the array
+
+        // Split the array into two halves
+        int[] firstHalf = Arrays.copyOfRange(numbers, 0, mid);
+        int[] secondHalf = Arrays.copyOfRange(numbers, mid, numbers.length);
+
+        // Create two threads for sorting each half
+        ArraySortThread sorter1 = new ArraySortThread(firstHalf);
+        ArraySortThread sorter2 = new ArraySortThread(secondHalf);
+
+        // Start both sorting threads
+        sorter1.start();
+        sorter2.start();
+
+        try		// Wait for both threads to finish execution
+        {
+            sorter1.join();
+            sorter2.join();
+        } 
+        catch (InterruptedException e) 
+        {
+            e.printStackTrace();
+        }
+
+        int[] sortedArray = mergeSortedArrays(firstHalf, secondHalf);		// Merge the two sorted halves into a single sorted array
+
+        System.out.println("Final Sorted Array: " + Arrays.toString(sortedArray));		// Print the final sorted array
+    }
+
+    public static int[] mergeSortedArrays(int[] left, int[] right)		// Method to merge two sorted arrays into one sorted array
+    {
+        int[] mergedArray = new int[left.length + right.length];
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.length && j < right.length)		// Merge elements from both arrays in sorted order
+        	{
+            if (left[i] < right[j]) 
+            {
+                mergedArray[k++] = left[i++];
+            } 
+            else 
+            {
+                mergedArray[k++] = right[j++];
+            }
+        }
+
+        while (i < left.length)		// Add remaining elements from left array 
+        {
+            mergedArray[k++] = left[i++];
+        }
+
+        while (j < right.length)		// Add remaining elements from right array
+        {
+            mergedArray[k++] = right[j++];
+        }
+
+        return mergedArray; // Return the final merged sorted array
+    }
+}
+
+##output
+Thread-0 sorted: [3, 7, 9, 12, 15]
+Thread-1 sorted: [1, 2, 6, 11, 20]
+Final Sorted Array: [1, 2, 3, 6, 7, 9, 11, 12, 15, 20]
+
+
