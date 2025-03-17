@@ -1,0 +1,127 @@
+Q 1. Perform the following tasks:
+
+a. Create Student table with following attributes (STUDENT_ID , FIRST_NAME, LAST_NAME, PHONE_NUMBER, MARKS, COURSE_ID).
+
+--> CREATE TABLE Student (
+    STUDENT_ID INT ,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    PHONE_NUMBER VARCHAR(15),
+    MARKS INT,
+    COURSE_ID INT
+); 
+
+b. Create Course table with following attributes (COURSE_ID, COURSE_NAME).
+
+--> CREATE TABLE Course (
+    COURSE_ID INT ,
+    COURSE_NAME VARCHAR(100)
+);
+
+c. Write a SQL statement to insert 8 records with your own value into the tables.
+
+--> INSERT INTO Student (STUDENT_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, MARKS, COURSE_ID) VALUES
+(1, 'Akila', 'Konda', '9876543210', 85, 101),
+(2, 'Pradeep', 'Awar', '9876543211', 78, 102),
+(3, 'Ankita', 'Yemul', '9876543212', 92, 101),
+(4, 'Archana', 'Medam', '9876543213', 65, 103),
+(5, 'Priyanka', 'Dudam', '9876543214', 88, 102),
+(6, 'Gayatri', 'Lagshetti', '9876543215', 76, 101),
+(7, 'Sachin', 'Jalkoti', '9876543216', 90, 103),
+(8, 'Tanuja', 'Salunke', '9876543217', 82, 102);
+
+d. Write a query to get the number of students with the same course.
+
+--> INSERT INTO Course (COURSE_ID, COURSE_NAME) VALUES
+(101, 'Computer Science'),
+(102, 'Electrical Engineering'),
+(103, 'Mechanical Engineering');
+
+f. Write a query to get the student name, course name and marks of the students.
+
+--> SELECT COURSE_ID, COUNT(STUDENT_ID) AS Student_Count 
+FROM Student 
+GROUP BY COURSE_ID;
+
+g. Write a query to get the Average marks of students course wise.
+
+--> SELECT C.COURSE_NAME, AVG(S.MARKS) AS Average_Marks
+FROM Student S
+JOIN Course C ON S.COURSE_ID = C.COURSE_ID
+GROUP BY C.COURSE_NAME;
+
+
+Q 2.  Create database for hospital management system & Perform the following tasks:
+
+a. Create HEALTH CARE WORKERS table with following attributes (EMPLOYEE_ID , FIRST_NAME, LAST_NAME,EMAIL, PHONE_NUMBER, HIRE_DATE, SALARY, DESIGNATION).
+
+--> CREATE TABLE Health_Care_Workers (
+    EMPLOYEE_ID INT ,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    EMAIL VARCHAR(100),
+    PHONE_NUMBER VARCHAR(15),
+    HIRE_DATE DATE,
+    SALARY INT,
+    DESIGNATION VARCHAR(50)
+);
+
+b. Create PATIENT table with following attributes (PATIENT_ID,NAME, PHONE_NUMBER).
+
+--> CREATE TABLE Patient (
+    PATIENT_ID INT ,
+    NAME VARCHAR(100),
+    PHONE_NUMBER VARCHAR(15)
+);
+
+c. Write a SQL statement to insert 10 records with your own value into the tables.
+
+10 records into Health_Care_Workers table
+
+--> INSERT INTO Health_Care_Workers (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, SALARY, DESIGNATION) VALUES
+(1, 'Akila', 'Konda', 'akila.konda@email.com', '9876543201', '2020-06-15', 30000, 'Doctor'),
+(2, 'Priyanka', 'Dudam', 'priya.dudam@email.com', '9876543202', '2019-05-10', 28000, 'Nurse'),
+(3, 'Sachin', 'Jalkoti', 'sachin.jalkoti@email.com', '9876543203', '2021-08-20', 26000, 'Technician'),
+(4, 'Tanuja', 'Salunke', 'tanuja.salunke@email.com', '9876543204', '2018-03-12', 35000, 'Doctor'),
+(5, 'Gayatri', 'Lagshetti', 'gayatri.lagshetti@email.com', '9876543205', '2020-11-30', 24000, 'Technician'),
+(6, 'Pradeep', 'Awar', 'pradeep.awar@email.com', '9876543206', '2017-07-25', 27000, 'Nurse'),
+(7, 'Archana', 'Medam', 'archana.medam@email.com', '9876543207', '2019-09-15', 22000, 'Technician'),
+(8, 'Ankita', 'Yemul', 'ankita.yemul@email.com', '9876543208', '2016-04-05', 29000, 'Doctor'),
+(9, 'Ankita', 'Kuchan', 'ankita.kuchan@email.com', '9876543209', '2022-01-20', 20000, 'Nurse'),
+(10, 'Shrutika', 'Ganji', 'shrutika.ganji@email.com', '9876543210', '2015-12-10', 40000, 'Surgeon');
+
+10 records into Patient table
+
+--> INSERT INTO Patient (PATIENT_ID, NAME, PHONE_NUMBER) VALUES
+(1, 'Akila Konda', '9876543210'),
+(2, 'Pradeep Awar', '9876543211'),
+(3, 'Ankita Yemul', '9876543212'),
+(4, 'Archana Medam', '9876543213'),
+(5, 'Priyanka Dudam', '9876543214'),
+(6, 'Gayatri Lagshetti', '9876543215'),
+(7, 'Sachin Jalkoti', '9876543216'),
+(8, 'Tanuja Salunke', '9876543217'),
+(9, 'Ankita Kuchan', '9876543209'),
+(10, 'Shrutika Ganji', '9876543210');
+
+d. Write a query to get the names (first_name, last_name),Designation, salary.
+
+--> SELECT FIRST_NAME, LAST_NAME, DESIGNATION, SALARY 
+FROM Health_Care_Workers;
+
+e. Write a query to get the number of employees with the same Designation
+
+--> SELECT DESIGNATION, COUNT(EMPLOYEE_ID) AS Employee_Count 
+FROM Health_Care_Workers 
+GROUP BY DESIGNATION;
+
+f. Write a query to get employee name who are getting salary more than 25000.
+
+--> SELECT FIRST_NAME, LAST_NAME, SALARY 
+FROM Health_Care_Workers 
+WHERE SALARY > 25000;
+
+g. Fetch HEALTH CARE WORKERS name using their employee id.
+
+--> SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME 
+FROM Health_Care_Workers;
