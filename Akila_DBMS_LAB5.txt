@@ -1,0 +1,75 @@
+1. Write a database connectivity program to connect with database. You can select any database. perform select operation to print records from database table. 
+
+--> Create a database and table in MySQL:
+
+create database firstconnection;
+use firstconnection;
+create table firstable(uid int, uname varchar(20));
+insert into firstable values(111, 'abc');
+insert into firstable values(222, 'pqr');
+insert into firstable values(333, 'xyz');
+select * from firstable;
+
+-- Java Program for Database Connectivity
+
+package com.demo;
+import java.sql.*;
+
+public class Firstable 
+{
+
+	public static void main(String[] args) 
+	{
+		try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/firstconnection",
+							"root","mysql");
+			
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from firstable");
+			
+			while(rs.next())
+			{
+				int uid = rs.getInt(1);
+				String uname = rs.getString(2);
+				
+				System.out.println(uid + " " + uname);
+			}
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
+}
+
+## output
+
+111 abc
+222 pqr
+333 xyz
+
+
+
+2. Create a database Country with database table as countries inside it. use show databse command and display all databses. use ALTER command to rename countries table to new_country remove column from table and add a new column.
+
+--> CREATE DATABASE Country;
+
+-- USE Country;
+
+-- CREATE TABLE Countries(country_id INT PRIMARY KEY,
+						country_name VARCHAR(50),
+						population INT);
+
+-- SHOW DATABASES;
+
+-- ALTER TABLE countries RENAME TO new_country;
+
+-- ALTER TABLE new_country DROP COLUMN population;
+
+-- ALTER TABLE new_country ADD COLUMN continent VARCHAR(50);
+
+-- DESC new_country;

@@ -1,0 +1,120 @@
+1. Create a database table 'Customer ' using below mentioned fields.
+
+Customer id, Customer name, Customer age, Customer City, Customer order_amount
+
+Insert below mentioed records :
+
+insert   : (101,'amar',23,'bhopal',25000);
+
+insert   :  (102,'rohan',25,'bhopal',23000);
+
+insert   : (103,'sohan',23,'up',25000);
+
+insert   : (104,'kiran',28,'up',21000);
+
+insert   : (105,'Raj',28,'ajmer',22000);
+
+insert  : (106,'Shiv',28,'ajmer',29000);
+
+Arrange records as ascending and descending order according to age and order amount.
+
+Using group by clause arrange records according to city and age.
+
+--> -- Create the Customer table
+CREATE TABLE Customer (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    customer_age INT,
+    customer_city VARCHAR(50),
+    customer_order_amount INT
+);
+
+-- Insert records into the Customer table
+INSERT INTO Customer (customer_id, customer_name, customer_age, customer_city, customer_order_amount) VALUES
+(101, 'Amar', 23, 'Bhopal', 25000),
+(102, 'Rohan', 25, 'Bhopal', 23000),
+(103, 'Sohan', 23, 'UP', 25000),
+(104, 'Kiran', 28, 'UP', 21000),
+(105, 'Raj', 28, 'Ajmer', 22000),
+(106, 'Shiv', 28, 'Ajmer', 29000);
+
+-- Arrange records in ascending order by age
+SELECT * FROM Customer ORDER BY customer_age ASC;
+
+-- Arrange records in descending order by age
+SELECT * FROM Customer ORDER BY customer_age DESC;
+
+-- Arrange records in ascending order by order amount
+SELECT * FROM Customer ORDER BY customer_order_amount ASC;
+
+-- Arrange records in descending order by order amount
+SELECT * FROM Customer ORDER BY customer_order_amount DESC;
+
+-- Group records by city and age
+SELECT customer_city, customer_age, COUNT(*) AS total_customers
+FROM Customer
+GROUP BY customer_city, customer_age;
+
+
+
+2. Create a database table 'Employee' using below mentioned fields.
+
+Employee id, Employee name, Employee salary
+
+insert below mentioned records :
+
+(101,"Akshay",25000)
+
+(102, "Amar",30000)
+
+(103,"Sheetal",28000)
+
+(104,"rohan",20000)
+
+(105,"Karan",25000)
+
+(106,"Suresh",25000)
+
+(107,"Ravi",28000)
+
+Update salary for sheetal as 30000 and print all records
+
+select employees with salary greater than or equal to 25000
+
+According to salary print all records in ascending and descending order
+
+use Order by clause
+
+--> -- Create the Employee table
+CREATE TABLE Employee (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(50),
+    employee_salary INT
+);
+
+-- Insert records into the Employee table
+INSERT INTO Employee (employee_id, employee_name, employee_salary) VALUES
+(101, 'Akshay', 25000),
+(102, 'Amar', 30000),
+(103, 'Sheetal', 28000),
+(104, 'Rohan', 20000),
+(105, 'Karan', 25000),
+(106, 'Suresh', 25000),
+(107, 'Ravi', 28000);
+
+-- Update salary for Sheetal to 30000
+UPDATE Employee 
+SET employee_salary = 30000 
+WHERE employee_name = 'Sheetal';
+
+-- Print all records
+SELECT * FROM Employee;
+
+-- Select employees with salary greater than or equal to 25000
+SELECT * FROM Employee WHERE employee_salary >= 25000;
+
+-- Print all records in ascending order by salary
+SELECT * FROM Employee ORDER BY employee_salary ASC;
+
+-- Print all records in descending order by salary
+SELECT * FROM Employee ORDER BY employee_salary DESC;

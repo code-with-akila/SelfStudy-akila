@@ -1,0 +1,122 @@
+1. create a table   emp_details  as (emp_id ,emp_name ,
+	                        job_name ,manager_id ,
+	                        hire_date ,salary ,
+	                         comission , dept_id )
+
+insert below mentioned records
+
+(68319,'kayling','president',null,'1991-11-18', 6000.00,null,1001);
+
+(66928,'blaze','manager',68319,'1991-05-01', 2750.00,null,3001);
+
+(67832,'clare','manager',68319,'1991-06-09', 2550.00,null,1001);
+
+(65646,'jonas','manager',68319,'1991-04-02', 2957.00,null,2001);
+
+(67858,'scarlet','analyst',65646,'1997-04-19',3100.00,null,2001);
+
+(9602,'frank','analyst',65646,'1991-12-03',3100.00,null,2001);
+
+Select all records with salary between 2500 and 3500
+
+select all records with salary starting from  digit 2 ( use like operator)
+
+select all records with salary having digit 2 or 3 in between ( use like operator)
+
+select all records having 0 in salary at last position ( use like operator)
+
+--> Create the emp_details table
+	CREATE TABLE emp_details (
+    	emp_id INT PRIMARY KEY,
+    	emp_name VARCHAR(50),
+    	job_name VARCHAR(50),
+    	manager_id INT,
+    	hire_date DATE,
+    	salary DECIMAL(10,2),
+    	commission DECIMAL(10,2),
+    	dept_id INT
+	);
+
+-- Insert records into the emp_details table
+INSERT INTO emp_details (emp_id, emp_name, job_name, manager_id, hire_date, salary, commission, dept_id) VALUES
+(68319, 'Kayling', 'President', NULL, '1991-11-18', 6000.00, NULL, 1001),
+(66928, 'Blaze', 'Manager', 68319, '1991-05-01', 2750.00, NULL, 3001),
+(67832, 'Clare', 'Manager', 68319, '1991-06-09', 2550.00, NULL, 1001),
+(65646, 'Jonas', 'Manager', 68319, '1991-04-02', 2957.00, NULL, 2001),
+(67858, 'Scarlet', 'Analyst', 65646, '1997-04-19', 3100.00, NULL, 2001),
+(9602, 'Frank', 'Analyst', 65646, '1991-12-03', 3100.00, NULL, 2001);
+
+-- Select all records with salary between 2500 and 3500
+SELECT * FROM emp_details WHERE salary BETWEEN 2500 AND 3500;
+
+-- Select all records with salary starting from digit 2 (use LIKE operator)
+SELECT * FROM emp_details WHERE salary LIKE '2%';
+
+-- Select all records with salary having digit 2 or 3 in between (use LIKE operator)
+SELECT * FROM emp_details WHERE salary LIKE '%2%' OR salary LIKE '%3%';
+
+-- Select all records having 0 in salary at the last position (use LIKE operator)
+SELECT * FROM emp_details WHERE salary LIKE '%0';
+
+
+
+2. Create a table with custdetails  as (custid , custname , 
+			             city ,postalcode ,country )
+
+
+insert following records 
+
+(1,'alfred','berlin','12209','Germany');
+
+(2,'ana','mexico','05021','mexico');
+
+(3,'antanio','mexico','05023','mexico');
+
+(4,'harry','london','WA11DP','UK');
+
+(5,'sierra','lulea','S95822','sweden');
+
+Print all records of customers from country mexico.
+
+Print all records of customers in ascending order of countries.
+
+Print count of records for customers from country  mexico.( use group by  & having clauses)
+
+Print all records in descending order having more than 1 entries from same country.
+(use group by, order by & having clauses)
+
+--> Create the custdetails table
+	CREATE TABLE custdetails (
+	    custid INT PRIMARY KEY,
+	    custname VARCHAR(50),
+	    city VARCHAR(50),
+	    postalcode VARCHAR(20),
+	    country VARCHAR(50)
+	);
+
+-- Insert records into the custdetails table
+INSERT INTO custdetails (custid, custname, city, postalcode, country) VALUES
+(1, 'Alfred', 'Berlin', '12209', 'Germany'),
+(2, 'Ana', 'Mexico', '05021', 'Mexico'),
+(3, 'Antanio', 'Mexico', '05023', 'Mexico'),
+(4, 'Harry', 'London', 'WA11DP', 'UK'),
+(5, 'Sierra', 'Lulea', 'S95822', 'Sweden');
+
+-- Print all records of customers from country Mexico
+SELECT * FROM custdetails WHERE country = 'Mexico';
+
+-- Print all records of customers in ascending order of countries
+SELECT * FROM custdetails ORDER BY country ASC;
+
+-- Print count of records for customers from country Mexico (use GROUP BY & HAVING)
+SELECT country, COUNT(*) AS total_customers 
+FROM custdetails 
+GROUP BY country 
+HAVING country = 'Mexico';
+
+-- Print all records in descending order having more than 1 entry from the same country
+SELECT * FROM custdetails 
+WHERE country IN (
+    SELECT country FROM custdetails GROUP BY country HAVING COUNT(*) > 1
+) 
+ORDER BY country DESC;
